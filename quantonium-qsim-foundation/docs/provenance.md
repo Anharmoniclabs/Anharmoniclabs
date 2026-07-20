@@ -19,4 +19,8 @@ inverse: x = U X
 orientation: rows=samples, columns=basis-vectors
 ```
 
-The implementation here is intentionally narrow and independent. It does not copy QuantoniumOS application services, desktop code, legacy transforms, fast approximations, or AI research.
+The exact simulator and canonical Python implementation are intentionally
+independent of upstream application services. The original QSC C source/header
+and their required `rft_kernel.h` ABI declaration are imported under
+`native/`, with all source notices preserved. No desktop, language-model,
+legacy-transform, or fast-approximation code was imported.

@@ -1,4 +1,4 @@
-"""Canonical square Resonant Fourier Transform operator.
+"""Compatibility API for the canonical square Resonant Fourier Transform.
 
 Convention
 ----------
@@ -17,8 +17,14 @@ from __future__ import annotations
 import numpy as np
 from numpy.typing import ArrayLike, NDArray
 
-PHI: float = (1.0 + np.sqrt(5.0)) / 2.0
-
+from .canonical import (
+    PHI,
+    canonical_rft_basis,
+    canonical_rft_forward,
+    canonical_rft_inverse,
+    raw_phi_basis,
+    rft_frequencies,
+)
 
 def _validate_size(size: int) -> int:
     if isinstance(size, bool) or not isinstance(size, (int, np.integer)):
@@ -31,6 +37,9 @@ def _validate_size(size: int) -> int:
 
 def rft_frequencies(size: int, *, phase_ratio: float = PHI) -> NDArray[np.float64]:
     """Return the canonical fractional frequency schedule."""
+    if phase_ratio == PHI:
+        from .canonical import rft_frequencies as canonical_frequencies
+        return canonical_frequencies(size)
     size = _validate_size(size)
     if not np.isfinite(phase_ratio):
         raise ValueError("phase_ratio must be finite")
@@ -40,6 +49,9 @@ def rft_frequencies(size: int, *, phase_ratio: float = PHI) -> NDArray[np.float6
 
 def raw_phi_basis(size: int, *, phase_ratio: float = PHI) -> NDArray[np.complex128]:
     """Return the raw, generally non-orthogonal, square phi-grid basis."""
+    if phase_ratio == PHI:
+        from .canonical import raw_phi_basis as canonical_raw_basis
+        return canonical_raw_basis(size)
     size = _validate_size(size)
     n = np.arange(size, dtype=np.float64)[:, np.newaxis]
     frequencies = rft_frequencies(size, phase_ratio=phase_ratio)[np.newaxis, :]
@@ -59,6 +71,8 @@ def canonical_rft_operator(
     matrices. When omitted, a dimension-scaled floating-point tolerance is
     used. The function never silently substitutes a different transform.
     """
+    if phase_ratio == PHI and eigenvalue_tolerance is None:
+        return canonical_rft_basis(size)
     size = _validate_size(size)
     phi_basis = raw_phi_basis(size, phase_ratio=phase_ratio)
     gram = phi_basis.conj().T @ phi_basis
@@ -94,7 +108,9 @@ def forward_rft(
     vector = np.asarray(state, dtype=np.complex128)
     if vector.ndim != 1 or vector.size == 0:
         raise ValueError("state must be a non-empty one-dimensional vector")
-    transform = canonical_rft_operator(vector.size) if operator is None else np.asarray(operator)
+    if operator is None:
+        return canonical_rft_forward(vector)
+    transform = np.asarray(operator)
     if transform.shape != (vector.size, vector.size):
         raise ValueError("operator shape must match state dimension")
     return np.asarray(transform.conj().T @ vector, dtype=np.complex128)
@@ -109,7 +125,9 @@ def inverse_rft(
     vector = np.asarray(coefficients, dtype=np.complex128)
     if vector.ndim != 1 or vector.size == 0:
         raise ValueError("coefficients must be a non-empty one-dimensional vector")
-    transform = canonical_rft_operator(vector.size) if operator is None else np.asarray(operator)
+    if operator is None:
+        return canonical_rft_inverse(vector)
+    transform = np.asarray(operator)
     if transform.shape != (vector.size, vector.size):
         raise ValueError("operator shape must match coefficient dimension")
     return np.asarray(transform @ vector, dtype=np.complex128)

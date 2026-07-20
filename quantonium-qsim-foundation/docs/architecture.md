@@ -1,28 +1,23 @@
 # Architecture
 
 ```text
-canonical formula
-      |
-      v
-src/quantonium_qsim/rft
-  raw phi basis -> Gram eigendecomposition -> unitary U
-      |
-      +--------------------+
-      |                    |
-      v                    v
-numerical validation   Qiskit adapter
-U^H U, round trip      UnitaryGate / Operator / Statevector
-                           |
-                           v
-                     circuit metrics
-                     generic decomposition vs QFT
+Quantonium simulation stack
+├── exact/       independent full complex statevector execution
+├── rft/         one canonical phi-grid-polar-v1 transform
+├── symbolic/    restricted product representation + original native QSC
+├── adapters/    Qiskit, Cirq, Qulacs, Stim, IBM Runtime references
+└── benchmarks/  correctness metrics, fair timing, reproducible manifests
 ```
 
-## Boundaries
+The exact engine owns arbitrary-circuit correctness. The symbolic engine owns
+only structured-state compression and reconstruction. There is no delegation
+from either engine into an adapter. Optional adapter imports occur only when a
+caller explicitly selects that reference.
 
-- The canonical module contains one square Gram-normalized definition.
-- Quantum dimensions must be powers of two.
-- The Qiskit unitary is an exact matrix embedding, not an efficient synthesis claim.
-- There is no AI, model training, tokenizer, neural network, chat interface, or agent code.
-- There is no silent FFT, DCT, identity, raw-basis, or approximate fallback.
-- Physical IBM hardware integration is intentionally deferred until simulation and decomposition results justify it.
+The exact simulator and Qiskit share a documented little-endian convention:
+label 0 is the least-significant index bit and the first k-unitary target is
+the least-significant local bit. The Cirq adapter performs its axis conversion
+explicitly; Stim rejects non-Clifford operations.
+
+No canonical entry point has a transform fallback. Exact dense construction
+raises above its documented safety limit.

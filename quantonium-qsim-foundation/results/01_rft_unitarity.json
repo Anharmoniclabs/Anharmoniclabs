@@ -1,4 +1,17 @@
 {
+  "git_commit_sha": "uncommitted historical run",
+  "source_quantoniumos_commit_sha": "5bfe066e3b2e3fea722987d21252c69d5b63e2df",
+  "dependency_versions": {"historical_environment": "not recorded"},
+  "python_version": "not recorded",
+  "platform": "not recorded",
+  "seed": 0,
+  "input_hash": "historical input not recorded",
+  "backend": "numpy Hermitian eigendecomposition",
+  "exact_command": "python experiments/01_verify_rft_unitarity.py",
+  "metrics": {"location": "legacy top-level records"},
+  "passed": true,
+  "conclusion": "Historical finite unitarity measurements passed their recorded tolerance.",
+  "limitation": "This predates the reproducible manifest runner; environment and input hash were not recorded.",
   "experiment": "canonical_rft_unitarity",
   "git_commit": "uncommitted",
   "records": [

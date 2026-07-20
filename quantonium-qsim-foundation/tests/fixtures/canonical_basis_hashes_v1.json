@@ -1,0 +1,17 @@
+{
+  "formula_version": "phi-grid-polar-v1",
+  "basis_orientation": "rows=samples, columns=basis-vectors",
+  "forward_convention": "X = U^H x",
+  "inverse_convention": "x = U X",
+  "portable_hash_decimals": 10,
+  "sizes": {
+    "2": "ed06421db1f6cc94fbfe8d31f06ee68c7db969ca4f0fdac35c8787639ba68e44",
+    "4": "af482f6dd5a0f9cc0e9be33956211a26fb727da00540dd2f994618f2b10cd427",
+    "8": "0c748921fb1111abc4cb7c2fe355d00ac12941cb2d22fa141f7f41c9d6bc70be",
+    "16": "78a569c725199322b15b6a1935d41376042a03a5f00e6b41e269cb3bcc78b2ba",
+    "32": "1eb7a45d5812b877e546e3a0e7465ae46bd3cf97d36e35952465f453c1b35f9d",
+    "64": "ad5092cfd7268e9eb253a10247d1b556232af7e67325b5511a49957f65256075",
+    "128": "3d673d52f1ca745ea32c95a2b7d245b129cb5ceb3264e4d6550f0dc1fb20fd05",
+    "256": "065c814d61951566939a8ef8707e9d2dad47771766e3424a1f2dcd33a30dced7"
+  }
+}

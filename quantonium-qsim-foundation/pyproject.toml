@@ -17,6 +17,22 @@ dependencies = [
 quantum = [
   "qiskit>=2.5,<3",
 ]
+qiskit = [
+  "qiskit>=2.5,<3",
+  "qiskit-aer>=0.17,<1",
+]
+cirq = [
+  "cirq-core>=1.6,<2",
+]
+qulacs = [
+  "qulacs>=0.6,<1",
+]
+stim = [
+  "stim>=1.15,<2",
+]
+ibm = [
+  "qiskit-ibm-runtime>=0.43,<1",
+]
 dev = [
   "pytest>=8.0,<10",
 ]
@@ -27,3 +43,6 @@ where = ["src"]
 [tool.pytest.ini_options]
 addopts = "-ra"
 testpaths = ["tests"]
+markers = [
+  "hardware: requires explicit credentials and real-QPU submission",
+]

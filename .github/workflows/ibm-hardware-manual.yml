@@ -1,0 +1,33 @@
+name: Manual IBM hardware experiment
+
+on:
+  workflow_dispatch:
+    inputs:
+      size:
+        description: RFT dimension
+        required: true
+        default: "2"
+        type: choice
+        options: ["2", "4"]
+      shots:
+        description: Sampler shots
+        required: true
+        default: "1024"
+
+jobs:
+  submit:
+    environment: ibm-quantum-hardware
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: quantonium-qsim-foundation
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with: {python-version: "3.12"}
+      - run: python -m pip install -e ".[qiskit,ibm]"
+      - name: Submit explicitly requested hardware experiment
+        env:
+          IBM_QUANTUM_API_KEY: ${{ secrets.IBM_QUANTUM_API_KEY }}
+          IBM_QUANTUM_CRN: ${{ secrets.IBM_QUANTUM_CRN }}
+        run: python experiments/run_ibm_hardware_protocol.py --size "${{ inputs.size }}" --shots "${{ inputs.shots }}" --submit
