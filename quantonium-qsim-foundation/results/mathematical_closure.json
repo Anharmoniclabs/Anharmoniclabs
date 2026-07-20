@@ -1,0 +1,132 @@
+{
+  "backend": "quantonium_canonical_rft_numpy_eigh",
+  "conclusion": "The canonical definition closes numerically and matches every frozen upstream basis hash.",
+  "dependency_versions": {
+    "cirq": "not-installed",
+    "numpy": "2.5.1",
+    "qiskit": "2.5.0",
+    "qiskit-aer": "0.17.2",
+    "qiskit-ibm-runtime": "0.48.0",
+    "qulacs": "0.6.13",
+    "stim": "1.16.0"
+  },
+  "exact_command": "python experiments/run_mathematical_closure.py",
+  "git_commit_sha": "8caf2b507c806a01dee0aa9d21e3374630c9c4fe",
+  "input_hash": "5b88598d98f4fe2230b6d1cd855b5308899d1c3f0adf1baf0d311159a7ec4f7a",
+  "limitation": "Finite numerical closure is not a proof of efficient circuit synthesis or application advantage.",
+  "metrics": {
+    "sizes": [
+      {
+        "basis_sha256": "ed06421db1f6cc94fbfe8d31f06ee68c7db969ca4f0fdac35c8787639ba68e44",
+        "deterministic": true,
+        "expected_sha256": "ed06421db1f6cc94fbfe8d31f06ee68c7db969ca4f0fdac35c8787639ba68e44",
+        "left_identity_error": 5.20740757162067e-16,
+        "norm_error": 2.220446049250313e-16,
+        "parseval_error": 2.220446049250313e-16,
+        "passed": true,
+        "rank": 2,
+        "right_identity_error": 5.926969055564841e-16,
+        "roundtrip_error": 3.7238012298709097e-16,
+        "size": 2
+      },
+      {
+        "basis_sha256": "af482f6dd5a0f9cc0e9be33956211a26fb727da00540dd2f994618f2b10cd427",
+        "deterministic": true,
+        "expected_sha256": "af482f6dd5a0f9cc0e9be33956211a26fb727da00540dd2f994618f2b10cd427",
+        "left_identity_error": 2.134097684888182e-15,
+        "norm_error": 0.0,
+        "parseval_error": 2.220446049250313e-16,
+        "passed": true,
+        "rank": 4,
+        "right_identity_error": 2.1827109451804174e-15,
+        "roundtrip_error": 8.145445757240072e-16,
+        "size": 4
+      },
+      {
+        "basis_sha256": "0c748921fb1111abc4cb7c2fe355d00ac12941cb2d22fa141f7f41c9d6bc70be",
+        "deterministic": true,
+        "expected_sha256": "0c748921fb1111abc4cb7c2fe355d00ac12941cb2d22fa141f7f41c9d6bc70be",
+        "left_identity_error": 4.327923922760298e-15,
+        "norm_error": 0.0,
+        "parseval_error": 2.220446049250313e-16,
+        "passed": true,
+        "rank": 8,
+        "right_identity_error": 4.37646676437608e-15,
+        "roundtrip_error": 8.35275911785493e-16,
+        "size": 8
+      },
+      {
+        "basis_sha256": "78a569c725199322b15b6a1935d41376042a03a5f00e6b41e269cb3bcc78b2ba",
+        "deterministic": true,
+        "expected_sha256": "78a569c725199322b15b6a1935d41376042a03a5f00e6b41e269cb3bcc78b2ba",
+        "left_identity_error": 1.0433085754708685e-14,
+        "norm_error": 8.881784197001252e-16,
+        "parseval_error": 1.9984014443252818e-15,
+        "passed": true,
+        "rank": 16,
+        "right_identity_error": 1.0395477734524291e-14,
+        "roundtrip_error": 3.2071029846159094e-15,
+        "size": 16
+      },
+      {
+        "basis_sha256": "1eb7a45d5812b877e546e3a0e7465ae46bd3cf97d36e35952465f453c1b35f9d",
+        "deterministic": true,
+        "expected_sha256": "1eb7a45d5812b877e546e3a0e7465ae46bd3cf97d36e35952465f453c1b35f9d",
+        "left_identity_error": 1.7687792815848242e-14,
+        "norm_error": 4.440892098500626e-16,
+        "parseval_error": 8.881784197001252e-16,
+        "passed": true,
+        "rank": 32,
+        "right_identity_error": 1.7688282470409532e-14,
+        "roundtrip_error": 2.9357532088992612e-15,
+        "size": 32
+      },
+      {
+        "basis_sha256": "ad5092cfd7268e9eb253a10247d1b556232af7e67325b5511a49957f65256075",
+        "deterministic": true,
+        "expected_sha256": "ad5092cfd7268e9eb253a10247d1b556232af7e67325b5511a49957f65256075",
+        "left_identity_error": 3.8256328686926266e-14,
+        "norm_error": 1.1102230246251565e-16,
+        "parseval_error": 1.1102230246251565e-16,
+        "passed": true,
+        "rank": 64,
+        "right_identity_error": 3.8435014873958966e-14,
+        "roundtrip_error": 4.893576415565598e-15,
+        "size": 64
+      },
+      {
+        "basis_sha256": "3d673d52f1ca745ea32c95a2b7d245b129cb5ceb3264e4d6550f0dc1fb20fd05",
+        "deterministic": true,
+        "expected_sha256": "3d673d52f1ca745ea32c95a2b7d245b129cb5ceb3264e4d6550f0dc1fb20fd05",
+        "left_identity_error": 8.712134573063028e-14,
+        "norm_error": 5.551115123125783e-16,
+        "parseval_error": 9.992007221626409e-16,
+        "passed": true,
+        "rank": 128,
+        "right_identity_error": 8.718170805495877e-14,
+        "roundtrip_error": 8.03968789370521e-15,
+        "size": 128
+      },
+      {
+        "basis_sha256": "065c814d61951566939a8ef8707e9d2dad47771766e3424a1f2dcd33a30dced7",
+        "deterministic": true,
+        "expected_sha256": "065c814d61951566939a8ef8707e9d2dad47771766e3424a1f2dcd33a30dced7",
+        "left_identity_error": 1.8564846941581327e-13,
+        "norm_error": 4.440892098500626e-16,
+        "parseval_error": 4.440892098500626e-16,
+        "passed": true,
+        "rank": 256,
+        "right_identity_error": 1.8561798304204584e-13,
+        "roundtrip_error": 9.343862092297048e-15,
+        "size": 256
+      }
+    ]
+  },
+  "passed": true,
+  "platform": "Linux-6.8.0-1052-azure-x86_64-with-glibc2.39",
+  "python_version": "3.12.1 (main, Mar 11 2026, 12:17:56) [GCC 13.3.0]",
+  "schema_version": "quantonium-qsim-result-v1",
+  "seed": 73021,
+  "source_quantoniumos_commit_sha": "5bfe066e3b2e3fea722987d21252c69d5b63e2df",
+  "timestamp_utc": "2026-07-20T15:43:32.203839+00:00"
+}
