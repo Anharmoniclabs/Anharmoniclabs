@@ -42,9 +42,9 @@ GitHub Pages                         Private environment
 - API credentials, signing keys, provider tokens, or privileged service URLs.
 - Error messages, traces, or manifests that reveal private parameters.
 
-The deployment workflow uploads only `site/` and rejects a small set of known
-protected implementation terms. That check is a guardrail, not a substitute
-for review.
+GitHub Pages publishes from the repository root. The browser entrypoint imports
+only `assets/`; those files must be reviewed as a completely public artifact
+before every release.
 
 ## Service contract principles
 
@@ -101,8 +101,7 @@ Before treating any future implementation as confidential:
    unpublished.
 2. Keep unpublished implementations in a private repository with restricted
    access and secret-scanning enabled.
-3. Publish the Pages artifact from a clean public repository, or use a workflow
-   that receives only a reviewed static artifact.
+3. Publish only reviewed static browser assets from the Pages source branch.
 4. Deploy private compute independently; GitHub Pages cannot run server-side
    Python or native code.
 5. Obtain appropriate intellectual-property advice before relying on trade

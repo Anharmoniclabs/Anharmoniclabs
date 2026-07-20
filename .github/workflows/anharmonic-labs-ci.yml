@@ -63,7 +63,7 @@ jobs:
       - uses: actions/checkout@v4
       - uses: actions/setup-python@v5
         with: {python-version: "3.12"}
-      - run: python -m pip install -e ".[dev,qiskit]"
+      - run: python -m pip install -e ".[dev,qiskit,cirq]"
       - run: cmake -S native/structured_kernel -B build/anharmonic-structured
       - run: cmake --build build/anharmonic-structured
       - run: python experiments/run_differential_suite.py

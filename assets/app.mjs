@@ -290,10 +290,6 @@ elements.nav.querySelectorAll("a").forEach((link) => link.addEventListener("clic
   elements.mobileMenu.setAttribute("aria-expanded", "false");
 }));
 
-document.querySelector("#protected-action").addEventListener("click", () => {
-  showToast("Protected compute requires the private service endpoint", 4200);
-});
-
 populateSystemSelectors();
 updateGateControls();
 setResultMode("probabilities");

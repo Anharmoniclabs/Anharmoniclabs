@@ -1,0 +1,174 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Anharmonic Labs interactive quantum statevector simulator.">
+    <meta name="theme-color" content="#07110f">
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self'; img-src 'self' data:; font-src 'self'; connect-src 'self'; object-src 'none'; base-uri 'self'; form-action 'self'">
+    <title>Anharmonic Labs — Quantum Workbench</title>
+    <link rel="stylesheet" href="assets/styles.css">
+    <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+    <script type="module" src="assets/app.mjs"></script>
+  </head>
+  <body class="app-body">
+    <a class="skip-link" href="#simulator">Skip to simulator</a>
+
+    <header class="site-header app-header">
+      <a class="brand" href="#simulator" aria-label="Anharmonic Labs workbench">
+        <svg class="brand-mark" viewBox="0 0 42 42" role="img" aria-label="Anharmonic Labs orbit mark">
+          <circle cx="21" cy="21" r="18"></circle>
+          <path d="M7 25c7-19 20-19 28-8S21 39 7 25Z"></path>
+          <circle class="brand-core" cx="26" cy="14" r="3"></circle>
+        </svg>
+        <span>Anharmonic <b>Labs</b></span>
+      </a>
+      <div class="engine-status"><i></i><span>Exact browser engine</span><strong>ONLINE</strong></div>
+      <button id="mobile-menu" class="mobile-menu" type="button" aria-expanded="false" aria-controls="primary-nav">
+        <span></span><span></span><span></span><span class="sr-only">Open navigation</span>
+      </button>
+      <nav id="primary-nav" class="primary-nav" aria-label="Primary navigation">
+        <a href="#simulator">Workbench</a>
+        <a href="https://github.com/Anharmoniclabs/Anharmoniclabs/tree/main/anharmonic-labs">Engine</a>
+        <a class="nav-cta" href="https://github.com/Anharmoniclabs/Anharmoniclabs">Source</a>
+      </nav>
+    </header>
+
+    <main class="simulator-app">
+      <section class="app-intro" aria-labelledby="app-title">
+        <div>
+          <p class="eyebrow"><span></span> Interactive state laboratory</p>
+          <h1 id="app-title">Build. Evolve. <em>Measure.</em></h1>
+          <p>Compose operations and inspect the complete complex state in real time.</p>
+        </div>
+        <dl class="app-readout" aria-label="Engine capabilities">
+          <div><dt>2<sup>n</sup></dt><dd>Exact state dimension</dd></div>
+          <div><dt>64</dt><dd>Maximum UI amplitudes</dd></div>
+          <div><dt>10<sup>−15</sup></dt><dd>Validated error scale</dd></div>
+        </dl>
+      </section>
+
+      <section id="simulator" class="lab-section app-lab" aria-labelledby="simulator-title">
+        <div class="section-heading app-section-heading">
+          <div>
+            <p class="eyebrow"><span></span> Live simulator</p>
+            <h2 id="simulator-title">Quantum workbench</h2>
+          </div>
+          <p>Every operation recalculates the state immediately. Everything runs locally in this browser.</p>
+        </div>
+
+        <div class="lab-shell">
+          <div class="lab-toolbar">
+            <label class="field compact-field">
+              <span>Systems</span>
+              <select id="system-count">
+                <option value="1">1 / dim 2</option>
+                <option value="2">2 / dim 4</option>
+                <option value="3" selected>3 / dim 8</option>
+                <option value="4">4 / dim 16</option>
+                <option value="5">5 / dim 32</option>
+                <option value="6">6 / dim 64</option>
+              </select>
+            </label>
+            <div class="toolbar-divider"></div>
+            <div class="example-group" aria-label="Circuit examples">
+              <span>Examples</span>
+              <button type="button" data-example="bell">Bell pair</button>
+              <button type="button" data-example="ghz">GHZ state</button>
+              <button type="button" data-example="interference">Interference</button>
+            </div>
+            <div class="toolbar-actions">
+              <button id="undo-gate" class="icon-button" type="button" title="Undo last operation" aria-label="Undo last operation">↶</button>
+              <button id="reset-circuit" class="text-button" type="button">Reset state</button>
+            </div>
+          </div>
+
+          <div class="lab-workspace">
+            <aside class="gate-panel" aria-labelledby="gate-panel-title">
+              <div class="panel-title"><h3 id="gate-panel-title">Gate palette</h3><span>Select</span></div>
+
+              <p class="gate-family">Superposition &amp; phase</p>
+              <div class="gate-grid">
+                <button type="button" class="gate-button is-selected" data-gate="h" aria-pressed="true"><strong>H</strong><span>Hadamard</span></button>
+                <button type="button" class="gate-button" data-gate="x" aria-pressed="false"><strong>X</strong><span>Pauli X</span></button>
+                <button type="button" class="gate-button" data-gate="y" aria-pressed="false"><strong>Y</strong><span>Pauli Y</span></button>
+                <button type="button" class="gate-button" data-gate="z" aria-pressed="false"><strong>Z</strong><span>Pauli Z</span></button>
+                <button type="button" class="gate-button" data-gate="s" aria-pressed="false"><strong>S</strong><span>π/2 phase</span></button>
+                <button type="button" class="gate-button" data-gate="t" aria-pressed="false"><strong>T</strong><span>π/4 phase</span></button>
+              </div>
+
+              <p class="gate-family">Rotation</p>
+              <div class="gate-grid gate-grid-three">
+                <button type="button" class="gate-button" data-gate="rx" aria-pressed="false"><strong>R<sub>x</sub></strong><span>X axis</span></button>
+                <button type="button" class="gate-button" data-gate="ry" aria-pressed="false"><strong>R<sub>y</sub></strong><span>Y axis</span></button>
+                <button type="button" class="gate-button" data-gate="rz" aria-pressed="false"><strong>R<sub>z</sub></strong><span>Z axis</span></button>
+              </div>
+
+              <p class="gate-family">Multi-system</p>
+              <div class="gate-grid gate-grid-two">
+                <button type="button" class="gate-button" data-gate="cx" aria-pressed="false"><strong>CX</strong><span>Controlled X</span></button>
+                <button type="button" class="gate-button" data-gate="cy" aria-pressed="false"><strong>CY</strong><span>Controlled Y</span></button>
+                <button type="button" class="gate-button" data-gate="cz" aria-pressed="false"><strong>CZ</strong><span>Controlled Z</span></button>
+                <button type="button" class="gate-button" data-gate="swap" aria-pressed="false"><strong>⇄</strong><span>Swap</span></button>
+              </div>
+
+              <div class="gate-config">
+                <label class="field"><span>Target</span><select id="target-system"></select></label>
+                <label id="controlled-fields" class="field" hidden><span>Control / peer</span><select id="control-system"></select></label>
+                <label id="rotation-fields" class="field rotation-field" hidden>
+                  <span>Angle <output id="angle-output" for="rotation-angle">0.50π</output></span>
+                  <input id="rotation-angle" type="range" min="-2" max="2" step="0.125" value="0.5">
+                </label>
+                <button id="add-gate" class="button button-primary add-gate" type="button">Add H</button>
+              </div>
+            </aside>
+
+            <div class="circuit-panel">
+              <div class="panel-title"><h3>Circuit timeline</h3><span id="operation-count">0 operations</span></div>
+              <div id="circuit-view" class="circuit-view" aria-live="polite"></div>
+              <p class="circuit-note"><span>LSB</span> q0 is the least-significant state index bit. Select an operation to remove it.</p>
+            </div>
+
+            <section class="results-panel" aria-labelledby="results-title">
+              <div class="results-header">
+                <div class="panel-title"><h3 id="results-title">Live state</h3><span class="exact-badge">Normalized</span></div>
+                <div class="tab-list" role="tablist" aria-label="Result view">
+                  <button type="button" role="tab" class="is-active" data-result-mode="probabilities" aria-selected="true">Probability</button>
+                  <button type="button" role="tab" data-result-mode="amplitudes" aria-selected="false">Amplitude</button>
+                </div>
+              </div>
+
+              <div class="metrics-row">
+                <div><span>Norm</span><strong id="metric-norm">1.000000000000</strong></div>
+                <div><span>Basis entropy</span><strong id="metric-entropy">0.0000 bits</strong></div>
+                <div><span>Support</span><strong id="metric-support">1</strong></div>
+              </div>
+
+              <div id="probability-panel" class="result-content" role="tabpanel">
+                <div id="probability-chart" class="probability-chart"></div>
+              </div>
+              <div id="amplitude-panel" class="result-content table-wrap" role="tabpanel" hidden>
+                <table class="amplitude-table">
+                  <thead><tr><th>Basis</th><th>Complex amplitude</th><th>Probability</th><th>Phase</th></tr></thead>
+                  <tbody id="amplitude-table-body"></tbody>
+                </table>
+              </div>
+
+              <div class="sample-bar">
+                <label class="field inline-field"><span>Shots</span><input id="shots" type="number" value="1024" min="1" max="1000000"></label>
+                <label class="field inline-field"><span>Seed</span><input id="seed" type="number" value="79"></label>
+                <button id="sample-circuit" class="button button-secondary" type="button">Sample measurements</button>
+              </div>
+            </section>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="app-footer">
+      <span>Anharmonic Labs · exact classical statevector simulation</span>
+      <span>No account · no remote runtime · no claim of quantum advantage</span>
+    </footer>
+    <div id="toast" class="toast" role="status" aria-live="polite"></div>
+  </body>
+</html>
