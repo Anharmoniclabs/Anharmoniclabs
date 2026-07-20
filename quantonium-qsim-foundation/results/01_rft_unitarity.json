@@ -1,0 +1,28 @@
+{
+  "experiment": "canonical_rft_unitarity",
+  "git_commit": "uncommitted",
+  "records": [
+    {
+      "qubits": 1,
+      "size": 2,
+      "unitarity_error_fro": 1.8837545905888578e-16
+    },
+    {
+      "qubits": 2,
+      "size": 4,
+      "unitarity_error_fro": 2.299026345950896e-15
+    },
+    {
+      "qubits": 3,
+      "size": 8,
+      "unitarity_error_fro": 4.131209631276879e-15
+    },
+    {
+      "qubits": 4,
+      "size": 16,
+      "unitarity_error_fro": 1.303570253075931e-14
+    }
+  ],
+  "schema_version": 1,
+  "timestamp_utc": "2026-07-20T13:50:52.585999+00:00"
+}
