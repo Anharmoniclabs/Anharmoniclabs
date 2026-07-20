@@ -110,6 +110,23 @@ def main() -> None:
     manager = generate_preset_pass_manager(backend=backend, optimization_level=args.optimization)
     keys = list(tomography)
     isa = [manager.run(tomography[key]) for key in keys]
+
+    # Backend-specific noisy simulation is a hard pre-submission gate. Any
+    # failure here aborts before SamplerV2 is created, so a real job is never
+    # used as the first validation target.
+    from qiskit_aer import AerSimulator
+    noisy_result = AerSimulator.from_backend(
+        backend, method="matrix_product_state"
+    ).run(isa, shots=args.shots, seed_simulator=SEED).result()
+    if not noisy_result.success:
+        raise RuntimeError(f"backend-noise simulation failed: {noisy_result.status}")
+    noisy_grouped: dict[str, dict[str, dict[str, int]]] = {}
+    for index, (probe, setting) in enumerate(keys):
+        noisy_counts = {
+            str(k): int(v) for k, v in noisy_result.get_counts(index).items()
+        }
+        noisy_grouped.setdefault(probe, {})[setting] = noisy_counts
+
     job = submit_sampler_v2(isa, backend, shots=args.shots, confirm=True)
     primitive = job.result()
     grouped: dict[str, dict[str, dict[str, int]]] = {}
@@ -132,12 +149,25 @@ def main() -> None:
         ideal_probabilities = ideal.probabilities()
         z_counts = grouped[name]["Z" * qubits]
         observed = np.array([z_counts.get(format(i, f"0{qubits}b"), 0) / args.shots for i in range(args.size)])
+        noisy_z_counts = noisy_grouped[name]["Z" * qubits]
+        noisy_observed = np.array([
+            noisy_z_counts.get(format(i, f"0{qubits}b"), 0) / args.shots
+            for i in range(args.size)
+        ])
         rho = reconstruct_pauli_tomography(grouped[name], qubits)
+        noisy_rho = reconstruct_pauli_tomography(noisy_grouped[name], qubits)
         records.append({
             "probe": name,
             "ideal_probabilities": ideal_probabilities.tolist(),
             "hardware_counts": z_counts,
             **compare_distributions(ideal_probabilities, observed),
+            "noisy_aer_counts": noisy_z_counts,
+            "noisy_aer_distribution_metrics": compare_distributions(
+                ideal_probabilities, noisy_observed
+            ),
+            "noisy_aer_tomography_state_fidelity": float(
+                state_fidelity(ideal, noisy_rho, validate=False)
+            ),
             "tomography_density_matrix_real": rho.real.tolist(),
             "tomography_density_matrix_imag": rho.imag.tolist(),
             "tomography_state_fidelity": float(state_fidelity(ideal, rho, validate=False)),
@@ -155,7 +185,10 @@ def main() -> None:
         command=f"python experiments/run_ibm_hardware_protocol.py --size {args.size} --shots {args.shots} --submit",
         metrics={
             "job_id": job.job_id(), "logical_qubits": qubits, "shots": args.shots,
-            "calibration_timestamp_available": calibration, "experiments": records,
+            "calibration_data_available": properties is not None,
+            "calibration_timestamp_available": calibration,
+            "noisy_simulation_backend": "AerSimulator.from_backend(matrix_product_state)",
+            "experiments": records,
         },
         passed=True,
         conclusion="Distribution and X/Y/Z tomography evidence recorded from the selected IBM QPU.",
