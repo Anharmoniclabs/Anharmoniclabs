@@ -10,7 +10,7 @@ import {
   simulate,
   stateNorm,
   zeroState,
-} from "../../../docs/assets/simulator-core.mjs";
+} from "../../../assets/simulator-core.mjs";
 
 const close = (actual, expected, tolerance = 1e-12) =>
   assert.ok(Math.abs(actual - expected) <= tolerance, `${actual} != ${expected}`);

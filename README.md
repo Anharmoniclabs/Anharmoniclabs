@@ -8,5 +8,5 @@ The implementation lives in [`anharmonic-labs`](anharmonic-labs/README.md).
 It contains no AI or language-model system.
 
 The interactive browser laboratory is the repository's GitHub Pages entrypoint
-and lives in [`docs/`](docs/index.html). It opens directly into the simulator;
-project documentation remains under [`anharmonic-labs/docs`](anharmonic-labs/docs).
+at [`index.html`](index.html). It opens directly into the simulator; project
+documentation remains under [`anharmonic-labs/docs`](anharmonic-labs/docs).

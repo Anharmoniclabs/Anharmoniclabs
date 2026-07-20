@@ -42,9 +42,9 @@ GitHub Pages                         Private environment
 - API credentials, signing keys, provider tokens, or privileged service URLs.
 - Error messages, traces, or manifests that reveal private parameters.
 
-GitHub Pages publishes only the repository-level `/docs` source directory.
-That source must be reviewed as a completely public artifact before every
-release.
+GitHub Pages publishes from the repository root. The browser entrypoint imports
+only `assets/`; those files must be reviewed as a completely public artifact
+before every release.
 
 ## Service contract principles
 
@@ -101,8 +101,7 @@ Before treating any future implementation as confidential:
    unpublished.
 2. Keep unpublished implementations in a private repository with restricted
    access and secret-scanning enabled.
-3. Publish only the reviewed static `/docs` artifact from the Pages source
-   branch.
+3. Publish only reviewed static browser assets from the Pages source branch.
 4. Deploy private compute independently; GitHub Pages cannot run server-side
    Python or native code.
 5. Obtain appropriate intellectual-property advice before relying on trade

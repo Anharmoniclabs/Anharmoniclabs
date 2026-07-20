@@ -16,8 +16,8 @@ normalization. Qiskit, Cirq, Qulacs, Stim, Aer, and IBM Runtime live under
 
 ## Web laboratory
 
-The public simulation UX lives in the repository-level [`docs/`](../docs/index.html)
-Pages source and opens directly into an interactive, dependency-free
+The public simulation UX lives in the repository-level [`index.html`](../index.html)
+Pages entrypoint and opens directly into an interactive, dependency-free
 statevector workbench for standard gates, amplitudes, probabilities, and seeded
 measurement sampling. Deployment uses GitHub's branch-backed Pages source; no
 custom Pages workflow is stored in the repository.

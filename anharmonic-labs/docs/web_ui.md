@@ -1,21 +1,20 @@
 # Anharmonic Labs web laboratory
 
-The repository-level `/docs` directory is the complete artifact published to
-GitHub Pages. It is a dependency-free static application: HTML, CSS, SVG, and
-JavaScript modules.
+The repository-level `index.html`, `assets/`, and `.nojekyll` files form the
+GitHub Pages application. It is a dependency-free static application: HTML,
+CSS, SVG, and JavaScript modules.
 
 The browser simulator intentionally contains only standard statevector
 operations. Do not place research operator constructors, native libraries,
 private coefficients, service credentials, or unpublished experiment data in
-that directory. Everything under the Pages source is downloadable by every
-visitor.
+those browser assets. Everything under the Pages source is public.
 
 ## Run locally
 
 From the repository root:
 
 ```bash
-python -m http.server 8000 --directory docs
+python -m http.server 8000 --directory .
 ```
 
 Then open `http://localhost:8000`.
@@ -28,8 +27,8 @@ node --test anharmonic-labs/tests/web/*.test.mjs
 
 ## Publish
 
-GitHub Pages is configured to deploy directly from `/docs` on the publishing
-branch. There is no custom Pages workflow. The default project URL is:
+GitHub Pages is configured to deploy directly from the publishing branch root.
+There is no custom Pages workflow. The default project URL is:
 
 ```text
 https://anharmoniclabs.github.io/Anharmoniclabs/
