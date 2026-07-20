@@ -1,0 +1,294 @@
+{
+  "backend": "qiskit_reference_circuit_analysis",
+  "conclusion": "Polar and QFT are distinct transforms with input-dependent output overlap and different generic synthesis costs.",
+  "dependency_versions": {
+    "cirq": "not-installed",
+    "numpy": "2.5.1",
+    "qiskit": "2.5.0",
+    "qiskit-aer": "0.17.2",
+    "qiskit-ibm-runtime": "0.48.0",
+    "qulacs": "0.6.13",
+    "stim": "1.16.0"
+  },
+  "exact_command": "python experiments/run_polar_vs_qft_suite.py",
+  "git_commit_sha": "41dacaef93045e957140015a4571c4892b05948e",
+  "git_worktree_dirty": true,
+  "input_hash": "c6db5b39f20dcc488e00cc1fec6a7f4ed3a9fb67dae8696976df772f3ba544ee",
+  "limitation": "Synthetic depolarizing noise is not backend calibration; duration and hardware fidelity require a selected QPU run.",
+  "metrics": {
+    "records": [
+      {
+        "estimated_duration": null,
+        "hardware_fidelity": null,
+        "output_state_fidelity_by_input_class": {
+          "basis_last": 0.9660162119066139,
+          "basis_zero": 0.9660162119066139,
+          "phase_sensitive": 0.27876450922683715,
+          "random_complex": 0.5797005328529768,
+          "uniform_product": 0.27876450922683704
+        },
+        "polar_circuit_synthesis": {
+          "depth": 1,
+          "one_qubit_operations": 1,
+          "operation_counts": {
+            "unitary": 1
+          },
+          "qubits": 1,
+          "total_operations": 1,
+          "transpiled": {
+            "basis_gates": [
+              "rz",
+              "sx",
+              "x",
+              "cx"
+            ],
+            "depth": 3,
+            "one_qubit_operations": 3,
+            "operation_counts": {
+              "rz": 2,
+              "sx": 1
+            },
+            "total_operations": 3,
+            "two_qubit_operations": 0
+          },
+          "two_qubit_operations": 0
+        },
+        "polar_ideal_simulation_runtime": {
+          "cold_start_ms": 0.449649,
+          "peak_resident_memory_delta_kib": 0,
+          "repetitions": 30,
+          "warm_median_ms": 0.20175700000000002,
+          "warm_p95_ms": 2.28649785,
+          "warm_stddev_ms": 0.6295587989992533,
+          "warmups": 3
+        },
+        "polar_synthetic_noisy_fidelity_zero_input": 0.9985014994999998,
+        "qft_circuit_synthesis": {
+          "depth": 1,
+          "one_qubit_operations": 1,
+          "operation_counts": {
+            "qft_dg": 1
+          },
+          "qubits": 1,
+          "total_operations": 1,
+          "transpiled": {
+            "basis_gates": [
+              "rz",
+              "sx",
+              "x",
+              "cx"
+            ],
+            "depth": 3,
+            "one_qubit_operations": 3,
+            "operation_counts": {
+              "rz": 2,
+              "sx": 1
+            },
+            "total_operations": 3,
+            "two_qubit_operations": 0
+          },
+          "two_qubit_operations": 0
+        },
+        "qft_ideal_simulation_runtime": {
+          "cold_start_ms": 0.444569,
+          "peak_resident_memory_delta_kib": 128,
+          "repetitions": 30,
+          "warm_median_ms": 0.3718885,
+          "warm_p95_ms": 2.4553899,
+          "warm_stddev_ms": 0.8277327313532423,
+          "warmups": 3
+        },
+        "size": 2,
+        "unitary_distance_global_phase_adjusted": 0.9808847106862232
+      },
+      {
+        "estimated_duration": null,
+        "hardware_fidelity": null,
+        "output_state_fidelity_by_input_class": {
+          "basis_last": 0.6723935452748153,
+          "basis_zero": 0.8788133209940182,
+          "phase_sensitive": 0.9129583283700938,
+          "random_complex": 0.7734937873120407,
+          "uniform_product": 0.2642276082685912
+        },
+        "polar_circuit_synthesis": {
+          "depth": 1,
+          "one_qubit_operations": 0,
+          "operation_counts": {
+            "unitary": 1
+          },
+          "qubits": 2,
+          "total_operations": 1,
+          "transpiled": {
+            "basis_gates": [
+              "rz",
+              "sx",
+              "x",
+              "cx"
+            ],
+            "depth": 11,
+            "one_qubit_operations": 13,
+            "operation_counts": {
+              "cx": 2,
+              "rz": 8,
+              "sx": 4,
+              "x": 1
+            },
+            "total_operations": 15,
+            "two_qubit_operations": 2
+          },
+          "two_qubit_operations": 1
+        },
+        "polar_ideal_simulation_runtime": {
+          "cold_start_ms": 0.335606,
+          "peak_resident_memory_delta_kib": 0,
+          "repetitions": 30,
+          "warm_median_ms": 0.1885715,
+          "warm_p95_ms": 2.1985293,
+          "warm_stddev_ms": 0.7457789990327378,
+          "warmups": 3
+        },
+        "polar_synthetic_noisy_fidelity_zero_input": 0.977633847234918,
+        "qft_circuit_synthesis": {
+          "depth": 1,
+          "one_qubit_operations": 0,
+          "operation_counts": {
+            "qft_dg": 1
+          },
+          "qubits": 2,
+          "total_operations": 1,
+          "transpiled": {
+            "basis_gates": [
+              "rz",
+              "sx",
+              "x",
+              "cx"
+            ],
+            "depth": 12,
+            "one_qubit_operations": 9,
+            "operation_counts": {
+              "cx": 5,
+              "rz": 7,
+              "sx": 2
+            },
+            "total_operations": 14,
+            "two_qubit_operations": 5
+          },
+          "two_qubit_operations": 1
+        },
+        "qft_ideal_simulation_runtime": {
+          "cold_start_ms": 0.724833,
+          "peak_resident_memory_delta_kib": 384,
+          "repetitions": 30,
+          "warm_median_ms": 1.2042625,
+          "warm_p95_ms": 8.9366448,
+          "warm_stddev_ms": 3.7714531420849564,
+          "warmups": 3
+        },
+        "size": 4,
+        "unitary_distance_global_phase_adjusted": 1.051526936995653
+      },
+      {
+        "estimated_duration": null,
+        "hardware_fidelity": null,
+        "output_state_fidelity_by_input_class": {
+          "basis_last": 0.01000392944686665,
+          "basis_zero": 0.9518377836772063,
+          "phase_sensitive": 0.06324242404916204,
+          "random_complex": 0.0455017005963832,
+          "uniform_product": 0.008588279643414532
+        },
+        "polar_circuit_synthesis": {
+          "depth": 1,
+          "one_qubit_operations": 0,
+          "operation_counts": {
+            "unitary": 1
+          },
+          "qubits": 3,
+          "total_operations": 1,
+          "transpiled": {
+            "basis_gates": [
+              "rz",
+              "sx",
+              "x",
+              "cx"
+            ],
+            "depth": 75,
+            "one_qubit_operations": 109,
+            "operation_counts": {
+              "cx": 18,
+              "rz": 68,
+              "sx": 40,
+              "x": 1
+            },
+            "total_operations": 127,
+            "two_qubit_operations": 18
+          },
+          "two_qubit_operations": 0
+        },
+        "polar_ideal_simulation_runtime": {
+          "cold_start_ms": 0.334765,
+          "peak_resident_memory_delta_kib": 0,
+          "repetitions": 30,
+          "warm_median_ms": 0.220912,
+          "warm_p95_ms": 2.584819399999997,
+          "warm_stddev_ms": 0.897516786025671,
+          "warmups": 3
+        },
+        "polar_synthetic_noisy_fidelity_zero_input": 0.7985221296832539,
+        "qft_circuit_synthesis": {
+          "depth": 1,
+          "one_qubit_operations": 0,
+          "operation_counts": {
+            "qft_dg": 1
+          },
+          "qubits": 3,
+          "total_operations": 1,
+          "transpiled": {
+            "basis_gates": [
+              "rz",
+              "sx",
+              "x",
+              "cx"
+            ],
+            "depth": 20,
+            "one_qubit_operations": 18,
+            "operation_counts": {
+              "cx": 9,
+              "rz": 15,
+              "sx": 3
+            },
+            "total_operations": 27,
+            "two_qubit_operations": 9
+          },
+          "two_qubit_operations": 0
+        },
+        "qft_ideal_simulation_runtime": {
+          "cold_start_ms": 3.860295,
+          "peak_resident_memory_delta_kib": 128,
+          "repetitions": 30,
+          "warm_median_ms": 3.7078255,
+          "warm_p95_ms": 6.64648245,
+          "warm_stddev_ms": 2.7758199946640594,
+          "warmups": 3
+        },
+        "size": 8,
+        "unitary_distance_global_phase_adjusted": 1.2985107085061125
+      }
+    ],
+    "separation": [
+      "transform_behavior",
+      "simulator_accuracy",
+      "circuit_synthesis_cost",
+      "hardware_noise",
+      "application_usefulness"
+    ]
+  },
+  "passed": true,
+  "platform": "Linux-6.8.0-1052-azure-x86_64-with-glibc2.39",
+  "python_version": "3.12.1 (main, Mar 11 2026, 12:17:56) [GCC 13.3.0]",
+  "schema_version": "anharmonic-labs-result-v1",
+  "seed": 73021,
+  "source_lineage_commit_sha": "5bfe066e3b2e3fea722987d21252c69d5b63e2df",
+  "timestamp_utc": "2026-07-20T17:45:15.673036+00:00"
+}

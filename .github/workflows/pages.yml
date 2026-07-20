@@ -1,0 +1,71 @@
+name: Deploy Anharmonic Labs web laboratory
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - "anharmonic-labs/site/**"
+      - "anharmonic-labs/tests/web/**"
+      - ".github/workflows/pages.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: pages
+  cancel-in-progress: true
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v6
+
+      - name: Set up Node
+        uses: actions/setup-node@v6
+        with:
+          node-version: "24"
+
+      - name: Test browser simulator
+        run: node --test anharmonic-labs/tests/web/*.test.mjs
+
+      - name: Check public artifact boundary
+        shell: bash
+        run: |
+          if grep -RIE --exclude='*.svg' \
+            'golden.?ratio|golden.?orbit|canonical_polar|gram.?matrix|inverse.?square.?root|structured_kernel' \
+            anharmonic-labs/site; then
+            echo "Protected implementation terminology found in the public Pages artifact."
+            exit 1
+          fi
+
+      - name: Validate required site files
+        run: |
+          test -s anharmonic-labs/site/index.html
+          test -s anharmonic-labs/site/assets/styles.css
+          test -s anharmonic-labs/site/assets/app.mjs
+          test -s anharmonic-labs/site/assets/simulator-core.mjs
+
+      - name: Configure GitHub Pages
+        uses: actions/configure-pages@v5
+
+      - name: Upload static site
+        uses: actions/upload-pages-artifact@v4
+        with:
+          path: anharmonic-labs/site
+
+  deploy:
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    runs-on: ubuntu-latest
+    needs: build
+    permissions:
+      pages: write
+      id-token: write
+    steps:
+      - name: Deploy GitHub Pages artifact
+        id: deployment
+        uses: actions/deploy-pages@v4

@@ -1,9 +1,13 @@
-# Nueronce
+# Anharmonic Labs
 
-The standalone Quantonium quantum simulation and verification laboratory lives
-in [`quantonium-qsim-foundation`](quantonium-qsim-foundation/README.md).
+Anharmonic Labs is a quantum-mathematics simulation and verification laboratory for
+Hilbert-space state evolution, unitary operators, structured state families,
+independent simulator comparison, and real-QPU experiments.
 
-It contains an independent exact statevector engine, the canonical RFT, the
-original restricted QSC native engine, external differential adapters, fair
-benchmarks, reproducible results, and a manual IBM Runtime harness. It is not an
-AI or language-model project.
+The implementation lives in [`anharmonic-labs`](anharmonic-labs/README.md).
+It contains no AI or language-model system.
+
+The browser laboratory lives in [`anharmonic-labs/site`](anharmonic-labs/site/README.md)
+and is prepared for deployment to GitHub Pages. Its public artifact contains
+only the standard quantum-simulation interface; research implementation details
+remain outside the website bundle.

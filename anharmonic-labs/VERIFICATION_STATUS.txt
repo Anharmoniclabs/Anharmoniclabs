@@ -1,0 +1,19 @@
+Anharmonic Labs verification status
+===============================
+
+Validated 2026-07-20 UTC after the Anharmonic Labs identity migration.
+
+- Editable package install: passed (`anharmonic-labs 0.2.0`)
+- Python compile check: passed
+- Native release build: passed (`libanharmonic_structured.so`)
+- Native Address/Undefined sanitizer build: passed
+- Python tests: 61 passed
+- Mathematical closure: passed at all 8 frozen dimensions
+- Differential comparisons: 193 passed
+- Structured-family suite: passed
+- Fair benchmark manifest: generated
+- Polar/QFT comparison manifest: generated
+- Modern SHA-256 sidecars: 5 verified
+- Preserved legacy SHA-256 sidecars: 5 verified
+
+Machine-readable evidence is stored under `results/`.

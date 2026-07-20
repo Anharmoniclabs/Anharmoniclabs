@@ -4,7 +4,7 @@ on:
   workflow_dispatch:
     inputs:
       size:
-        description: RFT dimension
+        description: Polar dimension
         required: true
         default: "2"
         type: choice
@@ -20,7 +20,7 @@ jobs:
     runs-on: ubuntu-latest
     defaults:
       run:
-        working-directory: quantonium-qsim-foundation
+        working-directory: anharmonic-labs
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-python@v5
