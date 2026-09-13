@@ -1,0 +1,15 @@
+# Local caches and build products
+.pytest_cache/
+__pycache__/
+*.py[cod]
+.venv/
+build/
+dist/
+*.egg-info/
+.coverage
+node_modules/
+.DS_Store
+
+# Local browser/test artifacts
+playwright-report/
+test-results/

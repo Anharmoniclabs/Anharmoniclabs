@@ -7,9 +7,11 @@ Pages. The public application demonstrates standard finite-dimensional quantum
 mathematics: state initialization, gate composition, exact complex amplitudes,
 probabilities, seeded sampling, and established example circuits.
 
-Research operator construction and native structured routines are not browser
-features. They must execute in a separately deployed private service if they
-are offered through the public product at all.
+The browser contains bounded, public reimplementations of selected research
+mathematics for inspection. It does not contain the Python package, the native
+C implementation, external SDKs, credentials, or real hardware submission.
+Full-scale research runs must execute in the repository or a separately
+deployed service if they are offered through the public product at all.
 
 ```text
 GitHub Pages                         Private environment
@@ -115,5 +117,8 @@ probabilities, normalization, Shannon entropy of the basis distribution,
 support size, and deterministic measurement sampling. Its little-endian
 convention matches the Python statevector engine.
 
-This is a classical exact simulator. It makes no claim of quantum advantage,
-hardware execution, general noise modeling, or protected-operator execution.
+The browser also exposes bounded golden-phase/polar analysis, structured
+schedule generation, density and observable analysis, local noise channels,
+custom local unitaries, JSON state/circuit interchange, and OpenQASM export.
+These are classical browser calculations. They make no claim of quantum
+advantage, external SDK execution, IBM Runtime access, or hardware execution.

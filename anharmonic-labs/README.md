@@ -23,10 +23,11 @@ measurement sampling. Deployment uses GitHub's branch-backed Pages source; no
 custom Pages workflow is stored in the repository.
 
 GitHub Pages cannot protect client-side implementation details: every shipped
-HTML, JavaScript, WebAssembly, and data file is public. The site therefore does
-not contain the research operator constructor or native research kernels. The
-required public/private boundary and the limitations of an oracle-style API are
-documented in [Public simulation UI and private compute boundary](docs/public_private_web_architecture.md).
+HTML, JavaScript, WebAssembly, and data file is public. The site contains only
+bounded browser-native reimplementations for inspection; it does not contain
+the Python package, native research kernels, external SDKs, credentials, or
+hardware runtime. The required public/private boundary and the limitations of
+an oracle-style API are documented in [Public simulation UI and private compute boundary](docs/public_private_web_architecture.md).
 
 ## Mathematical operator
 
