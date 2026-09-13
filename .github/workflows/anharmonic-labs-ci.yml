@@ -70,3 +70,16 @@ jobs:
       - run: python experiments/run_structured_suite.py
       - run: test -s results/differential_suite.json.sha256
       - run: test -s results/structured_suite.json.sha256
+
+  browser-parity:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with: {node-version: "20"}
+      - uses: actions/setup-python@v5
+        with: {python-version: "3.12"}
+      - run: python -m pip install -e "./anharmonic-labs[dev,qiskit]"
+      - run: node --test anharmonic-labs/tests/web/*.test.mjs
+        working-directory: .
+      - run: python experiments/run_browser_parity.py

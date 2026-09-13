@@ -120,6 +120,8 @@ measurement distributions plus X/Y/Z tomography for one- and two-label cases.
 
 The complete feature-by-feature prior-method comparison is documented in
 [Technical Differentiation and Method Comparison](docs/technical_novelty_and_method_comparison.md).
+The claim-by-claim evidence gap assessment is in
+[Research readiness and open evidence](docs/research_readiness.md).
 
 Established: finite numerical closure, frozen-hash agreement, native
 statevector agreement with independent references, structured-domain

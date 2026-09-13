@@ -4,8 +4,9 @@
 
 Anharmonic Labs publishes a static quantum-simulation workbench through GitHub
 Pages. The public application demonstrates standard finite-dimensional quantum
-mathematics: state initialization, gate composition, exact complex amplitudes,
-probabilities, seeded sampling, and established example circuits.
+mathematics: state initialization, gate composition, deterministic floating-
+point complex amplitudes, probabilities, seeded sampling, and established
+example circuits.
 
 The browser contains bounded, public reimplementations of selected research
 mathematics for inspection. It does not contain the Python package, the native

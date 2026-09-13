@@ -23,7 +23,7 @@
         </svg>
         <span>Anharmonic <b>Labs</b></span>
       </a>
-      <div class="engine-status"><i></i><span>Exact browser engine</span><strong>ONLINE</strong></div>
+      <div class="engine-status"><i></i><span>Deterministic numerical engine</span><strong>LOCAL</strong></div>
       <button id="mobile-menu" class="mobile-menu" type="button" aria-expanded="false" aria-controls="primary-nav">
         <span></span><span></span><span></span><span class="sr-only">Open navigation</span>
       </button>
@@ -43,7 +43,7 @@
           <p>Compose operations and inspect the complete complex state in real time.</p>
         </div>
         <dl class="app-readout" aria-label="Engine capabilities">
-          <div><dt>2<sup>n</sup></dt><dd>Exact state dimension</dd></div>
+          <div><dt>2<sup>n</sup></dt><dd>State dimension</dd></div>
           <div><dt>50</dt><dd>Maximum sparse systems</dd></div>
           <div><dt>10<sup>−15</sup></dt><dd>Validated error scale</dd></div>
         </dl>
@@ -338,7 +338,7 @@
       <div class="science-guide-grid">
         <article><span class="science-level science-level-real">EXACT NUMERICAL MODEL</span><h3>Statevector engine</h3><p>The browser stores complex amplitudes and applies finite-dimensional unitary matrices. For 1–6 systems it tracks every amplitude explicitly, so probabilities are calculated as $p(x)=|a_x|^2$ up to floating-point error.</p></article>
         <article><span class="science-level science-level-real">CHECKED AGAINST REFERENCES</span><h3>Parity evidence</h3><p>Selected circuits have been compared with the native NumPy simulator and Qiskit Statevector. Matching amplitudes and probabilities show implementation agreement, not proof that the browser is connected to physical qubits.</p></article>
-        <article><span class="science-level science-level-bounded">RESTRICTED SCALING</span><h3>Sparse 50 mode</h3><p>For 7–50 systems the browser stores only nonzero basis amplitudes. This is exact for sparse-preserving circuits while support stays bounded. It is not an arbitrary dense 50-qubit simulator.</p></article>
+        <article><span class="science-level science-level-bounded">RESTRICTED SCALING</span><h3>Sparse 50 mode</h3><p>For 7–50 systems the browser stores only nonzero basis amplitudes. This is deterministic numerical evolution for sparse-preserving circuits while support stays bounded. It is not an arbitrary dense 50-qubit simulator.</p></article>
         <article><span class="science-level science-level-math">NUMERICAL LINEAR ALGEBRA</span><h3>Polar transform</h3><p>The golden-phase dictionary is a deterministic matrix. Its Gram matrix measures column overlap; multiplying by the inverse square root produces the unitary polar/Löwdin basis. This is a calculation, not a new physical law.</p></article>
         <article><span class="science-level science-level-model">EXPERIMENTAL MODEL</span><h3>Vertex geometry</h3><p>The tetrahedron is an inspectable graph model inspired by geometric-storage ideas in the paper. Braiding updates phase, holonomy, and diagnostic invariants. It is not a demonstrated topological qubit, hardware device, or fault-tolerant code.</p></article>
         <article><span class="science-level science-level-no">NOT CLAIMED</span><h3>What this does not prove</h3><p>Nothing here establishes quantum advantage, physical quantum computation, arbitrary 50-qubit simulation, efficient asymptotic synthesis, cryptographic security, or superiority over the standard QFT.</p></article>
@@ -347,7 +347,7 @@
     </dialog>
 
     <footer class="app-footer">
-      <span>Anharmonic Labs · exact classical statevector simulation</span>
+      <span>Anharmonic Labs · classical numerical statevector simulation</span>
       <span>No account · no remote runtime · no claim of quantum advantage</span>
     </footer>
     <div id="toast" class="toast" role="status" aria-live="polite"></div>
