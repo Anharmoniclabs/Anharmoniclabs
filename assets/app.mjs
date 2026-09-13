@@ -419,7 +419,7 @@ function drawAtlas(timestamp = 0) {
       context.strokeStyle = Math.abs(holonomy.im) > 1e-8 ? "#ff5bd6" : "rgba(197,214,255,.22)";
       context.lineWidth = Math.abs(holonomy.im) > 1e-8 ? 3 : 1; context.stroke();
     });
-    projected.forEach((point, index) => { context.beginPath(); context.arc(point.x, point.y, 10 + Math.abs(state.vertexModel.vertices[index].geometricPhase) * 4, 0, Math.PI * 2); context.fillStyle = "#b8f25b"; context.shadowColor = "#b8f25b"; context.shadowBlur = 14; context.fill(); context.shadowBlur = 0; context.fillStyle = "#07110f"; context.font = "700 10px monospace"; context.textAlign = "center"; context.textBaseline = "middle"; context.fillText(`v${index}`, point.x, point.y); });
+    projected.forEach((point, index) => { context.beginPath(); context.arc(point.x, point.y, 10 + Math.abs(state.vertexModel.vertices[index].geometricPhase) * 4, 0, Math.PI * 2); context.fillStyle = "#1769aa"; context.shadowColor = "#1769aa"; context.shadowBlur = 14; context.fill(); context.shadowBlur = 0; context.fillStyle = "#ffffff"; context.font = "700 10px monospace"; context.textAlign = "center"; context.textBaseline = "middle"; context.fillText(`v${index}`, point.x, point.y); });
   } else if (state.atlasMode === "sparse") {
     try {
       const records = sparseRecords(state.sparseState ?? { amplitudes: new Map() }).slice(0, 120);
@@ -486,17 +486,17 @@ function drawEngineStack() {
       const endX = centerX + Math.cos(angle) * (transverse ? vectorLength : 0);
       const endY = centerY - (z * sphereRadius * .72);
       context.beginPath(); context.moveTo(centerX, centerY); context.lineTo(endX, endY);
-      context.strokeStyle = "#b8f25b"; context.lineWidth = 2; context.shadowColor = "#b8f25b"; context.shadowBlur = 8; context.stroke(); context.shadowBlur = 0;
-      context.fillStyle = "#eef3e8"; context.font = "9px monospace"; context.textAlign = "center"; context.fillText(`q${qubit}`, centerX, centerY + sphereRadius + 15);
+      context.strokeStyle = "#d45b36"; context.lineWidth = 2; context.shadowColor = "#d45b36"; context.shadowBlur = 8; context.stroke(); context.shadowBlur = 0;
+      context.fillStyle = "#172b45"; context.font = "9px monospace"; context.textAlign = "center"; context.fillText(`q${qubit}`, centerX, centerY + sphereRadius + 15);
     }
     return;
   }
   for (let qubit = 0; qubit < qubits; qubit += 1) {
     const x = start + qubit * (tileWidth + gap);
     const active = Math.floor(dominant / (2 ** qubit)) % 2 === 1;
-    context.fillStyle = active ? "#b8f25b" : "rgba(238,243,232,.10)";
+    context.fillStyle = active ? "#1769aa" : "rgba(23,55,91,.10)";
     context.fillRect(x, height * .36, tileWidth, height * .28);
-    context.fillStyle = active ? "#07110f" : "#9ca9a0";
+    context.fillStyle = active ? "#ffffff" : "#5e738d";
     context.font = `${qubits > 20 ? 8 : 10}px monospace`;
     context.textAlign = "center";
     context.textBaseline = "middle";
@@ -508,7 +508,7 @@ function drawEngineStack() {
   context.moveTo(start, height * .76);
   context.lineTo(start + qubits * (tileWidth + gap) - gap, height * .76);
   context.stroke();
-  context.fillStyle = "#5be6c4";
+  context.fillStyle = "#008f9c";
   context.font = "9px monospace";
   context.textAlign = "left";
   context.fillText(state.systemCount > 6 ? `${records.length} stored basis state${records.length === 1 ? "" : "s"}` : `${state.systemCount} qubit register`, start, height * .9);
@@ -810,7 +810,7 @@ function drawVertexCanvas(timestamp = 0) {
     context.strokeStyle = braided ? "rgba(91,230,196,.95)" : "rgba(232,242,225,.20)";
     context.lineWidth = braided ? 3 : 1;
     if (braided) {
-      context.shadowColor = "#5be6c4";
+      context.shadowColor = "#008f9c";
       context.shadowBlur = 12;
     }
     context.stroke();
@@ -827,12 +827,12 @@ function drawVertexCanvas(timestamp = 0) {
     context.fill();
     context.beginPath();
     context.arc(point.x, point.y, radius, 0, Math.PI * 2);
-    context.fillStyle = phaseMagnitude ? "#b8f25b" : "#eef3e8";
-    context.shadowColor = phaseMagnitude ? "#b8f25b" : "#eef3e8";
+    context.fillStyle = phaseMagnitude ? "#1769aa" : "#ffffff";
+    context.shadowColor = phaseMagnitude ? "#1769aa" : "#ffffff";
     context.shadowBlur = phaseMagnitude ? 18 : 8;
     context.fill();
     context.shadowBlur = 0;
-    context.fillStyle = "#07110f";
+    context.fillStyle = "#ffffff";
     context.font = "700 10px monospace";
     context.textAlign = "center";
     context.textBaseline = "middle";

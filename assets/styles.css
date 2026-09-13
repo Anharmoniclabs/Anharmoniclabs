@@ -533,3 +533,70 @@ h1 em, h2 em { color: var(--acid); font-weight: 400; }
   *, *::before, *::after { animation-duration: .01ms !important; animation-iteration-count: 1 !important; transition-duration: .01ms !important; }
   .parallax-depth { transform: none !important; }
 }
+
+/* Scientific light theme: paper, ink, cobalt operators, orange measurements. */
+:root {
+  color-scheme: light;
+  --ink: #f4f7fb;
+  --ink-raised: #ffffff;
+  --ink-soft: #e8eef7;
+  --line: rgba(23, 55, 91, 0.14);
+  --line-bright: rgba(23, 55, 91, 0.28);
+  --paper: #172b45;
+  --muted: #5e738d;
+  --acid: #1769aa;
+  --acid-soft: rgba(23, 105, 170, 0.1);
+  --aqua: #008f9c;
+  --violet: #6b58a9;
+  --magenta: #d45b36;
+  --danger: #bb3e4d;
+  --shadow: 0 22px 65px rgba(28, 54, 84, 0.13);
+}
+
+body { background: var(--ink); color: var(--paper); }
+body::before { opacity: .6; background: linear-gradient(115deg, transparent 0 35%, rgba(23,105,170,.035) 35.1%, transparent 35.3% 70%, rgba(212,91,54,.025) 70.1%, transparent 70.3%), radial-gradient(circle at var(--pointer-x, 50%) var(--pointer-y, 30%), rgba(23,105,170,.06), transparent 28%); }
+.site-header { background: rgba(244,247,251,.9); border-bottom-color: var(--line); }
+.brand, .primary-nav a:hover, .nav-link-button:hover { color: var(--paper); }
+.brand-mark path { stroke: var(--paper); }
+.app-body { background: radial-gradient(circle at 78% 0%, rgba(107,88,169,.09), transparent 28%), radial-gradient(circle at 8% 25%, rgba(0,143,156,.06), transparent 24%), var(--ink); }
+.science-guide, .science-guide-grid article { color: var(--paper); background: #ffffff; }
+.science-guide-header { background: linear-gradient(120deg, rgba(23,105,170,.08), rgba(107,88,169,.08)); }
+.science-guide-footer { background: #eef3f9; }
+.atlas-shell { background: linear-gradient(120deg, rgba(255,255,255,.98), rgba(237,243,250,.98)); }
+.atlas-visual { background-image: linear-gradient(rgba(23,105,170,.065) 1px, transparent 1px), linear-gradient(90deg, rgba(23,105,170,.065) 1px, transparent 1px), radial-gradient(circle at 50% 45%, rgba(0,143,156,.1), transparent 62%), #edf3f9; }
+.atlas-visual::after { border-color: rgba(23,105,170,.2); box-shadow: 0 0 70px rgba(107,88,169,.08), inset 0 0 45px rgba(0,143,156,.05); }
+.observatory-section, .analysis-section, .vertex-section, .lab-section { background: #eef3f9; }
+.observatory-shell, .lab-shell { background: #ffffff; }
+.observatory-controls, .lab-toolbar { background: #e8eef7; }
+.observatory-visual, .atlas-visual, .vertex-visual-wrap, .topology-graph-wrap { box-shadow: inset 0 0 60px rgba(23,105,170,.035); }
+.analysis-card { background: #ffffff; }
+.analysis-card .field input[type="text"], .analysis-card .field input[type="number"], .analysis-card textarea, .field select, .field input[type="number"], .observatory-control-group button, .observatory-control-group select { background: #f6f9fc; color: var(--paper); }
+.analysis-output { color: #294766; background: #f5f8fc; }
+.analysis-visual { background: linear-gradient(135deg, rgba(23,105,170,.07), rgba(107,88,169,.07)); }
+.visual-metric { background: rgba(232,238,247,.7); }
+.results-panel { background: #ffffff; }
+.metrics-row div { background: #f1f5fa; }
+.tab-list, .field select, .field input[type="number"] { background: #f6f9fc; }
+.tab-list button.is-active { background: #dce8f4; color: var(--paper); }
+.probability-track { background: rgba(23,55,91,.08); }
+.probability-fill { background: linear-gradient(90deg, rgba(23,105,170,.35), var(--acid)); }
+.amplitude-table thead { background: #e8eef7; }
+.circuit-panel { background: rgba(232,238,247,.38); }
+.gate-button, .circuit-gate { background: #f5f8fc; }
+.button-secondary { background: #e5edf6; color: var(--paper); }
+.button-primary { background: var(--acid); color: #ffffff; }
+.button-primary:hover { background: #0f568d; }
+.raw-details summary, .circuit-note, .engine-stack p { color: var(--muted); }
+.app-footer { border-top-color: var(--line); color: var(--muted); }
+.toast { border-color: rgba(23,105,170,.3); background: #ffffff; color: var(--paper); box-shadow: var(--shadow); }
+.observatory-svg .qubit-node { fill: #dbe7f2; stroke: #6d87a2; }
+.observatory-svg .graph-vertex, .atlas-scene .scene-node, .topology-graph .topology-vertex { fill: #ffffff; }
+.observatory-svg .trace-node { fill: rgba(255,255,255,.92); }
+.atlas-scene .scene-text, .topology-graph .topology-edge-label, .topology-graph .topology-phase-label { fill: var(--muted); }
+.circuit-note { color: var(--muted); }
+.wire { background: #9db1c7; }
+.control-mark { background: var(--aqua); box-shadow: 0 0 10px rgba(0,143,156,.35); }
+.probability-fill { background: linear-gradient(90deg, rgba(23,105,170,.35), var(--acid)); }
+.amplitude-table thead { background: #e8eef7; }
+.tab-list { background: #f6f9fc; }
+.exact-badge { border-color: rgba(0,143,156,.3); }
