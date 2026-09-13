@@ -699,8 +699,8 @@ function initParallaxStage() {
       const bounds = layer.getBoundingClientRect();
       const distance = (bounds.top + bounds.height / 2 - viewportCenter) / window.innerHeight;
       const factor = Number(layer.dataset.parallax || 0);
-      layer.style.setProperty("--scroll-depth", (distance * factor * 120).toFixed(2));
-      layer.style.setProperty("--scroll-zoom", Math.max(-.015, Math.min(.035, -distance * factor * .035)).toFixed(4));
+      layer.style.setProperty("--scroll-offset", `${(-distance * factor * 120).toFixed(2)}px`);
+      layer.style.setProperty("--scroll-scale", (1 + Math.max(-.015, Math.min(.035, -distance * factor * .035))).toFixed(4));
       layer.style.setProperty("--scroll-shadow", `${Math.max(0, 18 - Math.abs(distance) * 22).toFixed(1)}px`);
     });
     ticking = false;

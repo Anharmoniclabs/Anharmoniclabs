@@ -238,7 +238,7 @@ button { color: inherit; }
 }
 .atlas-section { padding: 0 clamp(14px, 3vw, 48px) 42px; }
 .atlas-shell { position: relative; display: grid; grid-template-columns: minmax(260px, .72fr) minmax(0, 1.28fr); max-width: 1540px; min-height: 390px; margin: auto; overflow: hidden; border: 1px solid var(--line-bright); border-radius: 8px; background: linear-gradient(120deg, rgba(13,21,48,.98), rgba(5,8,23,.99)); box-shadow: var(--shadow); }
-.parallax-depth { transform: translate3d(0, calc(var(--scroll-depth, 0) * -1px), 0) scale(calc(1 + var(--scroll-zoom, 0))); transition: transform 120ms linear; will-change: transform; }
+.parallax-depth { transform: translate3d(0, var(--scroll-offset, 0px), 0) scale(var(--scroll-scale, 1)); transition: transform 120ms linear; will-change: transform; }
 .atlas-shell.parallax-depth { box-shadow: 0 calc(30px + var(--scroll-shadow, 0px)) 100px rgba(0,0,0,.34), 0 0 70px rgba(98,246,255,.06); }
 .observatory-shell.parallax-depth { box-shadow: 0 calc(30px + var(--scroll-shadow, 0px)) 120px rgba(0,0,0,.42), 0 0 90px rgba(167,123,255,.08); }
 .atlas-shell::before { content: ""; position: absolute; inset: 0; pointer-events: none; background: linear-gradient(115deg, transparent 0 42%, rgba(98,246,255,.08) 42.1%, transparent 42.3% 68%, rgba(255,91,214,.06) 68.1%, transparent 68.3%); }
