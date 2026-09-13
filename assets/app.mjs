@@ -690,6 +690,32 @@ function showOutput(element, value) {
   element.textContent = typeof value === "string" ? value : JSON.stringify(value, null, 2);
 }
 
+function initParallaxStage() {
+  const layers = [...document.querySelectorAll("[data-parallax]")];
+  let ticking = false;
+  const updateScrollDepth = () => {
+    const viewportCenter = window.innerHeight * .42;
+    layers.forEach((layer) => {
+      const bounds = layer.getBoundingClientRect();
+      const distance = (bounds.top + bounds.height / 2 - viewportCenter) / window.innerHeight;
+      const factor = Number(layer.dataset.parallax || 0);
+      layer.style.setProperty("--scroll-depth", (distance * factor * 120).toFixed(2));
+      layer.style.setProperty("--scroll-zoom", Math.max(-.015, Math.min(.035, -distance * factor * .035)).toFixed(4));
+      layer.style.setProperty("--scroll-shadow", `${Math.max(0, 18 - Math.abs(distance) * 22).toFixed(1)}px`);
+    });
+    ticking = false;
+  };
+  window.addEventListener("scroll", () => {
+    if (!ticking) { window.requestAnimationFrame(updateScrollDepth); ticking = true; }
+  }, { passive: true });
+  window.addEventListener("resize", updateScrollDepth, { passive: true });
+  window.addEventListener("pointermove", (event) => {
+    document.documentElement.style.setProperty("--pointer-x", `${(event.clientX / window.innerWidth * 100).toFixed(1)}%`);
+    document.documentElement.style.setProperty("--pointer-y", `${(event.clientY / window.innerHeight * 100).toFixed(1)}%`);
+  }, { passive: true });
+  updateScrollDepth();
+}
+
 function visualReadout(element, title, explanation, metrics) {
   element.innerHTML = `<strong>${title}</strong><span>${explanation}</span><div class="visual-metrics">${metrics.map(({ label, value, tone = "state" }) => `<div class="visual-metric visual-metric-${tone}"><small>${label}</small><b>${value}</b></div>`).join("")}</div>`;
 }
@@ -1048,6 +1074,7 @@ elements.nav.querySelectorAll("a").forEach((link) => link.addEventListener("clic
 
 populateSystemCountOptions();
 populateSystemSelectors();
+initParallaxStage();
 updateGateControls();
 setResultMode("probabilities");
 renderAll();

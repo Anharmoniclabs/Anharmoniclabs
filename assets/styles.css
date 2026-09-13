@@ -32,6 +32,7 @@ body {
   line-height: 1.5;
   -webkit-font-smoothing: antialiased;
 }
+body::before { content: ""; position: fixed; z-index: -1; inset: 0; pointer-events: none; opacity: .42; background: linear-gradient(115deg, transparent 0 35%, rgba(98,246,255,.035) 35.1%, transparent 35.3% 70%, rgba(255,91,214,.03) 70.1%, transparent 70.3%), radial-gradient(circle at var(--pointer-x, 50%) var(--pointer-y, 30%), rgba(98,246,255,.08), transparent 28%); transition: background-position 500ms ease; }
 button, input, select { font: inherit; }
 button, a { -webkit-tap-highlight-color: transparent; }
 a { color: inherit; }
@@ -237,6 +238,9 @@ button { color: inherit; }
 }
 .atlas-section { padding: 0 clamp(14px, 3vw, 48px) 42px; }
 .atlas-shell { position: relative; display: grid; grid-template-columns: minmax(260px, .72fr) minmax(0, 1.28fr); max-width: 1540px; min-height: 390px; margin: auto; overflow: hidden; border: 1px solid var(--line-bright); border-radius: 8px; background: linear-gradient(120deg, rgba(13,21,48,.98), rgba(5,8,23,.99)); box-shadow: var(--shadow); }
+.parallax-depth { transform: translate3d(0, calc(var(--scroll-depth, 0) * -1px), 0) scale(calc(1 + var(--scroll-zoom, 0))); transition: transform 120ms linear; will-change: transform; }
+.atlas-shell.parallax-depth { box-shadow: 0 calc(30px + var(--scroll-shadow, 0px)) 100px rgba(0,0,0,.34), 0 0 70px rgba(98,246,255,.06); }
+.observatory-shell.parallax-depth { box-shadow: 0 calc(30px + var(--scroll-shadow, 0px)) 120px rgba(0,0,0,.42), 0 0 90px rgba(167,123,255,.08); }
 .atlas-shell::before { content: ""; position: absolute; inset: 0; pointer-events: none; background: linear-gradient(115deg, transparent 0 42%, rgba(98,246,255,.08) 42.1%, transparent 42.3% 68%, rgba(255,91,214,.06) 68.1%, transparent 68.3%); }
 .atlas-copy { position: relative; z-index: 1; display: grid; align-content: center; gap: 16px; padding: clamp(24px, 4vw, 50px); }
 .atlas-copy .eyebrow { margin: 0; }
@@ -527,4 +531,5 @@ h1 em, h2 em { color: var(--acid); font-weight: 400; }
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
   *, *::before, *::after { animation-duration: .01ms !important; animation-iteration-count: 1 !important; transition-duration: .01ms !important; }
+  .parallax-depth { transform: none !important; }
 }
