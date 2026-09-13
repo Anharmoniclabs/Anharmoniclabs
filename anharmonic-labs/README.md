@@ -1,5 +1,10 @@
 # Anharmonic Labs
 
+This research package is not relicensed by the GPLv3 license applied to the
+repository's public browser frontend. See the repository root README and
+`assets/COPYING` for the frontend scope; retain the license and provenance
+notices in this package and its native sources.
+
 Anharmonic Labs is a quantum-mathematics simulation and verification laboratory.
 The name reflects its study of nonuniform phase spectra and operators beyond a
 uniform harmonic grid. Its two principal representations are:
