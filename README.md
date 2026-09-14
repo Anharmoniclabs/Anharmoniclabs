@@ -1,6 +1,6 @@
 # Anharmonic Labs
 
-Anharmonic Labs is a quantum-mathematics simulation and verification laboratory for
+Anharmonic Labs is a quantum-mathematics simulation and verification lab for
 Hilbert-space state evolution, unitary operators, structured state families,
 independent simulator comparison, and real-QPU experiments.
 
